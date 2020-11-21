@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Q2 {
 
@@ -17,22 +18,39 @@ public class Q2 {
         {
             return true;
         }
-        HashSet<Character> hs = new HashSet<>();
-        for (int i=0;i<s2.length();i++)
+        if (s1.length() != s2.length())
         {
-            char ch = s2.charAt(i);
-            hs.add(ch);
+            return false;
+        }
+        TreeMap<Character,Integer> h1 = new TreeMap<Character, Integer>();
+        TreeMap<Character,Integer> h2 = new TreeMap<Character, Integer>();
+
+       for (char ch1 : s1.toCharArray())
+       {
+           if (h1.containsKey(ch1))
+           {
+               h1.put(ch1,h1.get(ch1)+1);
+           }
+           else
+           {
+               h1.put(ch1,1);
+           }
+       }
+        for (char ch2 : s2.toCharArray())
+        {
+
+            if (h2.containsKey(ch2))
+            {
+                h2.put(ch2,h2.get(ch2)+1);
+            }
+            else
+            {
+                h2.put(ch2,1);
+            }
+
         }
 
-        for (int i=0;i<s1.length();i++)
-        {
-            char ch = s1.charAt(i);
-            if (!hs.contains(ch))
-            {
-                return false;
-            }
-        }
-        return true;
+        return h1.equals(h2);
     }
 
 }
