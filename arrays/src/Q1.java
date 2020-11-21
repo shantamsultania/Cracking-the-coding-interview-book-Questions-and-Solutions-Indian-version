@@ -3,6 +3,12 @@ import java.util.Set;
 
 public class Q1 {
 
+    // program to check for Unique characters in a String
+
+
+    // us9ng hashset
+    // time complexity = O(n) where  n = s.length
+    // Space Complexity = O(1)
     public boolean isUnique(String s)
     {
         if(s == null)
